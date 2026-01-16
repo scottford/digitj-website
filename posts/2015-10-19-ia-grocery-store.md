@@ -24,12 +24,6 @@ But this isn’t any normal store. You find a few jars of one brand of peanut bu
 
 While grocery stores and websites might not appear to have a lot in common, both are places people go when they’re looking for something. Web users might not write a list when they visit a website, but they’re typically trying to accomplish specific goals. Trade buying eggs for sharing a picture on Facebook, and you start to see that the grocery store is like a physical website with features and ways to accomplish your tasks.
 
-[
-
-![Become a member](https://miro.medium.com/v2/da:true/resize:fit:0/60026f4340686a391639ac58864da18070aa773cea45de6e55fa47fd56bfdb74)
-
-](https://medium.com/plans?source=upgrade_membership---post_li_non_moc_upsell--57be426a619f---------------------------------------)
-
 Think about how you navigate a brand new store. Most don’t hand you a detailed map outlining where every item in the store is located. Although that might appear nice, it would likely look more like a phone book than a map and constantly change as new items are sold and old items are phased out. Instead of a map, grocery stores typically use **signs with general categories** to indicate what’s in each aisle. These signs serve the same purpose as main navigation items on websites. Both represent what things you’ll find if you navigate down them.
 
 Web developers and designers call these signs **information architecture**. Websites use menus, headers, animation and interaction to visually show users where they are and how to find what they’re looking for. For example, a university website’s menu might include Academics, Applying and Campus Life. If a user wanted to learn about the university’s English program, they can find what they’re looking through via elimination, since each topic of the menu makes it clear what information each section contains.
