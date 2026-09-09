@@ -1,59 +1,131 @@
 :root {
-	--primary: blue;
-	--secondary: white;
-	--background: #FFF0EB;
+	/* --- Palette: warm-light editorial, inspired by contentmaturity.com --- */
+	--bg:              #ECECE7;  /* page background, warm cream */
+	--surface:         #F9F9F7;  /* cards, nav, form fields */
+	--surface-alt:     #E7E7E2;  /* subtle hover / borders on cream */
+	--panel-deep:      #3D3C3A;  /* deep warm charcoal for contrast panels */
+
+	--text:            #2C2A29;  /* primary body text */
+	--text-muted:      #4F4D4B;  /* secondary text, captions */
+	--text-subtle:     #66645F;  /* time stamps, meta (AA-compliant on cream) */
+	--text-invert:     #F9F9F7;  /* text on panel-deep */
+
+	--accent:          #AA433F;  /* terracotta — links, CTAs */
+	--accent-hover:    #8E332F;  /* darker terracotta on hover */
+	--highlight:       #E7AB3F;  /* mustard — pull-quotes, tags */
+	--rule:            #D9D9D3;  /* hairlines */
+
+	/* --- Type --- */
+	--font-logo:    "Instrument Serif", "Fraunces", Georgia, serif;
+	--font-display: "Fraunces", Georgia, "Times New Roman", serif;
+	--font-body:    "Source Serif 4", "Fraunces", Georgia, serif;
+
+	/* Fraunces axes: opsz sets optical size, SOFT softens the terminals. */
+	--display-settings: "opsz" 120, "SOFT" 30;
+	--body-settings:    "opsz" 20;
 }
 
-*, *:before, *:after {
-  box-sizing: border-box;
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+html {
+	background-color: var(--bg);
 }
 
 html,
 body {
 	padding: 0;
 	margin: 0;
-	font-family: "Avenir", "Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+	font-family: var(--font-body);
+	font-variation-settings: var(--body-settings);
+	color: var(--text);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 body {
 	display: grid;
-	height: 100vh;
+	min-height: 100vh;
 	grid-template-rows: auto 1fr auto;
-	background-color: var(--background);
+	background-color: var(--bg);
+	font-size: 19px;
+	line-height: 1.55;
 }
 
 main {
-	max-width: 37.5em;
+	max-width: 40em;
+	margin: 0 auto;
+	width: 100%;
 }
 
-p,
+/* --- Prose rhythm --- */
+p {
+	color: var(--text-muted);
+	margin: 0 0 1.2em;
+	font-size: 1.05rem;   /* ~20px at 19px base */
+	line-height: 1.625;   /* echoes contentmaturity's 32.5/20 */
+}
+
 pre,
 code {
-	line-height: 1.5;
+	font-family: "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+	font-size: 0.95rem;
+	line-height: 1.55;
 }
 
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--font-display);
+	font-variation-settings: var(--display-settings);
+	color: var(--text);
+	font-weight: 400;    /* the reference runs light; weight adds warmth */
+	letter-spacing: -0.01em;
+	line-height: 1.15;
+	margin: 1.8em 0 0.55em;
+}
+
+h1 { font-size: 2.6rem;  line-height: 1.1;  letter-spacing: -0.02em; }
+h2 { font-size: 1.85rem; }
+h3 { font-size: 1.4rem;  }
+h4 { font-size: 1.15rem; letter-spacing: 0;  }
+
+/* First heading in an article shouldn't push down */
+article > h1:first-child,
+article > h1 + p small { }
+article > h1:first-child { margin-top: 0.2em; }
+
+/* --- Links --- */
 a[href],
 a[href]:visited {
-	color: var(--primary);
+	color: var(--accent);
+	text-decoration-line: underline;
+	text-decoration-thickness: 1px;
+	text-decoration-color: rgba(170, 67, 63, 0.35);
+	text-underline-offset: 3px;
+	transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
 
-a[href]:not(:hover) {
-	text-decoration: none;
+a[href]:hover {
+	color: var(--accent-hover);
+	text-decoration-color: var(--accent-hover);
 }
 
 img {
 	max-width: 100%;
 	height: auto;
+	border-radius: 2px;
 }
 
 header,
 main,
 footer {
-	padding: 1em;
+	padding: 2em;
 }
 
 main {
-	padding-bottom: 2em;
+	padding-bottom: 4em;
 }
 
 main :first-child,
@@ -61,8 +133,8 @@ main > article :first-child {
 	margin-top: 0;
 }
 
+/* --- Preformatted blocks --- */
 pre {
-	font-size: 14px;
 	direction: ltr;
 	text-align: left;
 	white-space: pre;
@@ -70,127 +142,353 @@ pre {
 	word-break: normal;
 	-moz-tab-size: 2;
 	tab-size: 2;
-	-webkit-hyphens: none;
-	-moz-hyphens: none;
-	-ms-hyphens: none;
 	hyphens: none;
-	padding: 1em;
-	margin: .5em 0;
+	padding: 1.25em 1.5em;
+	margin: 1.5em 0;
+	background-color: var(--surface);
+	border: 1px solid var(--rule);
+	border-radius: 3px;
+	overflow-x: auto;
 }
 
-/* Header Logo (style as h2) */
+code {
+	background-color: var(--surface);
+	padding: 0.1em 0.35em;
+	border-radius: 3px;
+}
+
+pre code {
+	background: transparent;
+	padding: 0;
+}
+
+/* --- Blockquote — pulled straight from the reference's mood --- */
+blockquote {
+	margin: 2em 0;
+	padding: 0.25em 0 0.25em 1.25em;
+	border-left: 3px solid var(--highlight);
+	font-family: var(--font-display);
+	font-variation-settings: var(--display-settings);
+	font-size: 1.4rem;
+	line-height: 1.35;
+	color: var(--text);
+	font-style: italic;
+}
+
+blockquote p { color: var(--text); font-size: inherit; line-height: inherit; }
+
+/* --- Header / site title --- */
+header {
+	background-color: var(--surface);
+	border-bottom: 1px solid var(--rule);
+	padding-top: 1.5em;
+	padding-bottom: 1em;
+}
+
 header > em {
 	display: block;
-	font-size: 2em;
-	margin: .67em 0;
-	font-weight: bold;
+	font-size: 2.1em;
+	margin: 0 0 0.3em;
+	font-weight: 400;
 	font-style: normal;
+	font-family: var(--font-logo);
+	letter-spacing: -0.005em;
+	text-align: center;
+	line-height: 1.05;
 }
 
-/* Header Nav */
+/* Higher-specificity than a[href] to defeat the global link underline */
+header > em a[href],
+header > em a[href]:visited {
+	color: var(--text);
+	text-decoration: none;
+}
+
+header > em a[href]:hover {
+	color: var(--accent);
+	text-decoration: none;
+}
+
+/* --- Header Nav --- */
+header nav {
+	text-align: center;
+	margin-bottom: 0;
+	border-bottom: none;
+	padding-bottom: 0;
+}
+
 header nav ul {
 	padding: 0;
+	margin: 0.25em 0 0;
 	list-style: none;
-}
-
-header nav ul :first-child {
-	margin-left: 0;
 }
 
 header nav li {
 	display: inline-block;
-	margin: 0 .25em;
+	margin: 0 0.9em;
 }
 
-header nav li a {
-	padding: .25em .5em;
-	border-radius: .25em;
-}
-
-header nav li a[href]:not(:hover) {
+/* Higher-specificity selector — beats a[href] so nav links get no underline */
+header nav a[href],
+header nav a[href]:visited {
+	padding: 0.4em 0;
+	font-family: var(--font-body);
+	font-weight: 400;
+	text-transform: none;
+	letter-spacing: 0;
+	font-size: 0.95rem;
+	position: relative;
+	color: var(--text-muted);
 	text-decoration: none;
 }
 
-header nav li a[data-current="current item"] {
-	background-color: white;
+header nav a[href]:hover {
+	color: var(--accent);
+	text-decoration: none;
 }
 
-/* Posts List */
-article {
-	margin-bottom: 1em;
-	padding-bottom: 1em;
-	border-bottom: 1px solid #eee;
-	border-bottom: 1px solid var(--secondary);
+/* Active state: a thin accent bar under the current page's nav item */
+header nav a[data-current="current item"] {
+	color: var(--text);
 }
+
+header nav a[data-current="current item"]:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0.05em;
+	height: 2px;
+	background-color: var(--accent);
+}
+
+/* --- Post list --- */
+article {
+	margin-bottom: 2em;
+	padding-bottom: 0;
+	border-bottom: none;
+}
+
+/* Decorative wavy-line divider between adjacent posts */
+article + article {
+	position: relative;
+	padding-top: 3em;
+}
+
+article + article::before {
+	content: "";
+	position: absolute;
+	top: 0.5em;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 220px;
+	height: 24px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 24' preserveAspectRatio='none'><path d='M4 12 Q17 2 30 12 T56 12 T82 12 T108 12 T134 12 T160 12 T186 12 T216 12' stroke='%23AA433F' stroke-width='1.75' fill='none' stroke-linecap='round'/></svg>");
+	opacity: 0.9;
+}
+
+article h2,
+article h3 { margin-top: 0; margin-bottom: 0.35em; }
+
+/* Higher-specificity than a[href] so article title links aren't underlined at rest */
+article h2 a[href],
+article h3 a[href],
+article h2 a[href]:visited,
+article h3 a[href]:visited {
+	color: var(--text);
+	text-decoration: none;
+}
+
+article h2 a[href]:hover,
+article h3 a[href]:hover {
+	color: var(--accent);
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-decoration-color: rgba(170, 67, 63, 0.4);
+	text-underline-offset: 4px;
+}
+
+article time,
+article small time {
+	font-size: 0.85rem;
+	color: var(--text-subtle);
+	font-style: normal;
+	letter-spacing: 0.02em;
+}
+
+article small { color: var(--text-subtle); }
+article small a { color: var(--text-muted); }
 
 main > section > article > * {
 	margin-top: 0;
-	margin-bottom: .5em;
+	margin-bottom: 0.6em;
 }
 
-/* Post Tags */
+.post-excerpt {
+	color: var(--text-muted);
+	margin-bottom: 0.6em;
+}
+
+.read-more,
+.read-more:visited {
+	color: var(--accent);
+	text-decoration: none;
+	font-weight: 500;
+}
+
+.read-more:hover {
+	color: var(--accent-hover);
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 3px;
+}
+
+/* --- Tag pills --- */
 a[rel="tag"],
 a[rel="tag"]:visited {
 	display: inline-block;
-  vertical-align: text-top;
-  text-transform: uppercase;
-	letter-spacing: .1em;
-  font-size: .625em;
-  padding: 0 .5em;
-	line-height: 2em;
-	height: 2em;
-  border: 1px solid var(--secondary);
-	background-color: var(--secondary);
-	color: var(--primary);
-  border-radius: .25em;
-  text-decoration: none;
-	margin: 0 .5em .5em 0;
+	vertical-align: text-top;
+	text-transform: none;
+	letter-spacing: 0.02em;
+	font-size: 0.78rem;
+	padding: 0.3em 0.85em;
+	line-height: normal;
+	border: 1px solid var(--accent);
+	background-color: transparent;
+	color: var(--accent);
+	border-radius: 999px;
+	text-decoration: none;
+	margin: 0 0.4em 0.4em 0;
+	transition: all 0.2s ease;
+	font-weight: 500;
+	font-family: var(--font-body);
 }
 
 a[rel="tag"]:hover {
-	border: 1px solid var(--primary);
-	background-color: var(--primary);
-	color: var(--secondary);
+	background-color: var(--accent);
+	color: var(--text-invert);
 }
 
-a[rel="tag"]:last-child {
-	margin-right: 0;
-}
+a[rel="tag"]:last-child { margin-right: 0; }
 
-/* Contact Form */
+/* --- Contact form --- */
 form {
-  display: grid;
-	padding: 2em 0;
+	display: grid;
+	padding: 2em;
+	background: var(--surface);
+	border: 1px solid var(--rule);
+	border-radius: 4px;
+	max-width: 600px;
+	margin: 0 auto;
 }
 
-form label {
-  display: none;
-}
+form label { display: none; }
 
 input,
 textarea,
 button {
-  width: 100%;
-  padding: 1em;
-  margin-bottom: 1em;
+	width: 100%;
+	padding: 0.9rem 1rem;
+	margin-bottom: 1.25em;
 	font-size: 1rem;
-	font-family: "Avenir", "Avenir Next", sans-serif;
+	font-family: var(--font-body);
+	border-radius: 3px;
 }
 
 input,
 textarea {
-	border: 1px solid black;
+	border: 1px solid var(--rule);
+	background-color: #fff;
+	color: var(--text);
+	transition: border-color 0.2s, background-color 0.2s;
+}
+
+input:focus,
+textarea:focus {
+	outline: none;
+	border-color: var(--accent);
+	background-color: #fff;
+	box-shadow: 0 0 0 3px rgba(170, 67, 63, 0.12);
 }
 
 button {
-	border: 1px solid var(--primary);
-	background-color: var(--primary);
-	color: var(--secondary);
+	border: none;
+	background-color: var(--panel-deep);
+	color: var(--text-invert);
 	cursor: pointer;
+	font-weight: 500;
+	text-transform: none;
+	letter-spacing: 0.02em;
+	transition: background-color 0.2s;
 }
 
-@media screen and (min-width:768px) {
-	:root {
-		font-size: 1.1rem;
-	}
+button:hover {
+	background-color: var(--accent);
+}
+
+/* --- Footer --- */
+footer {
+	text-align: center;
+	color: var(--text-subtle);
+	font-size: 0.85rem;
+	border-top: 1px solid var(--rule);
+	margin-top: 2em;
+	padding-top: 1.5em;
+	padding-bottom: 2em;
+}
+
+.footer-links {
+	margin: 0 0 0.6em;
+	font-size: 0.9rem;
+}
+
+.footer-links a[href],
+.footer-links a[href]:visited {
+	color: var(--text-muted);
+	text-decoration: none;
+	margin: 0 0.4em;
+}
+
+.footer-links a[href]:hover {
+	color: var(--accent);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+/* --- Post byline --- */
+article > p:has(> small) {
+	color: var(--text-subtle);
+	margin-top: -0.5em;
+	margin-bottom: 2em;
+}
+
+/* --- Bottom nav on post pages --- */
+main > nav {
+	max-width: 40em;
+	margin: 3em auto 0;
+	padding-top: 1.5em;
+	border-top: 1px solid var(--rule);
+	font-size: 0.95rem;
+}
+
+main > nav a[href],
+main > nav a[href]:visited { color: var(--text-muted); text-decoration: none; }
+main > nav a[href]:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+/* --- Responsive tune-up --- */
+@media screen and (min-width: 768px) {
+	:root { font-size: 18px; }
+	main { padding: 3em 2em; }
+	header { padding: 2em 2em 1em; }
+	header > em { font-size: 2.5em; }
+	h1 { font-size: 3rem; }
+	h2 { font-size: 2.1rem; }
+	h3 { font-size: 1.55rem; }
+}
+
+@media screen and (min-width: 1024px) {
+	main { padding: 3.5em 2em; }
+	h1 { font-size: 3.4rem; }
 }
