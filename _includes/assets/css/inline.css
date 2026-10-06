@@ -1,63 +1,110 @@
 :root {
-	--primary: blue;
-	--secondary: white;
-	--background: #FFF0EB;
+	--primary: #2C3E50;
+	--primary-light: #34495e;
+	--secondary: #FFF3E0;
+	/* Light orange for backgrounds */
+	--accent: #C0451A;
+	/* Burnt orange */
+	--link-color: #2980b9;
+	/* Distinct blue for links */
+	--background: #F8F4EF;
+	--text-main: #333333;
+	--text-light: #7f8c8d;
+	--border-color: #ecf0f1;
 }
 
-*, *:before, *:after {
-  box-sizing: border-box;
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
 }
 
 html,
 body {
 	padding: 0;
 	margin: 0;
-	font-family: "Avenir", "Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+	font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+	color: var(--text-main);
 }
 
 body {
 	display: grid;
-	height: 100vh;
+	min-height: 100vh;
 	grid-template-rows: auto 1fr auto;
 	background-color: var(--background);
 }
 
 main {
-	max-width: 37.5em;
+	max-width: 48em;
+	/* Increased width for better readability */
+	margin: 0 auto;
+	width: 100%;
 }
 
 p,
 pre,
 code {
-	line-height: 1.5;
+	line-height: 1.6;
+	/* Increased line height */
+	font-size: 1.1rem;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "Playfair Display", serif;
+	color: var(--primary);
+	line-height: 1.2;
+	margin: 1.5em 0 0.5em;
+}
+
+h1 {
+	font-size: 3rem;
+}
+
+h2 {
+	font-size: 2.25rem;
+}
+
+h3 {
+	font-size: 1.75rem;
+}
+
+/* General Link Styling */
 a[href],
 a[href]:visited {
-	color: var(--primary);
+	color: var(--accent);
+	/* Orange by default */
+	transition: color 0.2s ease;
 }
 
-a[href]:not(:hover) {
-	text-decoration: none;
+a[href]:hover {
+	color: var(--link-color);
+	/* Blue on hover */
 }
 
 img {
 	max-width: 100%;
 	height: auto;
+	border-radius: 4px;
+	/* Slight rounding */
 }
 
 header,
 main,
 footer {
-	padding: 1em;
+	padding: 1em 2em;
 }
 
 main {
-	padding-bottom: 2em;
+	padding-bottom: 4em;
 }
 
 main :first-child,
-main > article :first-child {
+main>article :first-child {
 	margin-top: 0;
 }
 
@@ -74,20 +121,56 @@ pre {
 	-moz-hyphens: none;
 	-ms-hyphens: none;
 	hyphens: none;
-	padding: 1em;
-	margin: .5em 0;
+	padding: 1.5em;
+	margin: 1.5em 0;
+	background-color: #f8f9fa;
+	border-left: 4px solid var(--primary);
+	border-radius: 4px;
+	overflow-x: auto;
+}
+
+blockquote {
+	margin: 1.5em 0;
+	padding: 1em 1.5em;
+	border-left: 4px solid var(--accent);
+	background-color: var(--secondary);
+	font-style: italic;
+	font-family: "Playfair Display", serif;
+	font-size: 1.2rem;
+	color: var(--primary);
 }
 
 /* Header Logo (style as h2) */
-header > em {
+header>em {
 	display: block;
-	font-size: 2em;
-	margin: .67em 0;
-	font-weight: bold;
+	font-size: 2.5em;
+	margin: 0.2em 0;
+	font-weight: 700;
 	font-style: normal;
+	font-family: "Playfair Display", serif;
+	text-align: center;
 }
 
+header>em a {
+	color: #000000;
+	/* Black text */
+	text-decoration: none;
+}
+
+header>em a:hover {
+	color: #000000;
+	/* Remain black on hover */
+}
+
+
 /* Header Nav */
+header nav {
+	text-align: center;
+	margin-bottom: 0;
+	border-bottom: 1px solid var(--border-color);
+	padding-bottom: 0.75em;
+}
+
 header nav ul {
 	padding: 0;
 	list-style: none;
@@ -99,31 +182,62 @@ header nav ul :first-child {
 
 header nav li {
 	display: inline-block;
-	margin: 0 .25em;
+	margin: 0 1em;
 }
 
 header nav li a {
-	padding: .25em .5em;
-	border-radius: .25em;
+	padding: .5em 0;
+	font-weight: 600;
+	font-size: 1rem;
+	position: relative;
+	color: var(--primary);
+	text-decoration: none;
+	font-family: "Source Serif 4", serif;
 }
 
-header nav li a[href]:not(:hover) {
+header nav li a:hover {
 	text-decoration: none;
+	color: var(--accent);
+}
+
+header nav li a:after {
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 2px;
+	bottom: 0;
+	left: 0;
+	background-color: var(--accent);
+	transition: width 0.3s;
+}
+
+header nav li a:hover:after,
+header nav li a[data-current="current item"]:after {
+	width: 100%;
 }
 
 header nav li a[data-current="current item"] {
-	background-color: white;
+	color: var(--primary);
 }
 
 /* Posts List */
 article {
-	margin-bottom: 1em;
-	padding-bottom: 1em;
-	border-bottom: 1px solid #eee;
-	border-bottom: 1px solid var(--secondary);
+	margin-bottom: 2em;
+	padding-bottom: 2em;
+	border-bottom: 1px solid var(--border-color);
 }
 
-main > section > article > * {
+article h2 {
+	margin-bottom: 0.5em;
+}
+
+article time {
+	font-size: 0.9rem;
+	color: var(--text-light);
+	font-style: italic;
+}
+
+main>section>article>* {
 	margin-top: 0;
 	margin-bottom: .5em;
 }
@@ -132,65 +246,197 @@ main > section > article > * {
 a[rel="tag"],
 a[rel="tag"]:visited {
 	display: inline-block;
-  vertical-align: text-top;
-  text-transform: uppercase;
+	vertical-align: text-top;
+	text-transform: uppercase;
 	letter-spacing: .1em;
-  font-size: .625em;
-  padding: 0 .5em;
-	line-height: 2em;
-	height: 2em;
-  border: 1px solid var(--secondary);
-	background-color: var(--secondary);
-	color: var(--primary);
-  border-radius: .25em;
-  text-decoration: none;
+	font-size: .8em;
+	padding: 0.4em 1em;
+	line-height: normal;
+	border: 1px solid var(--accent);
+	/* Accent border */
+	background-color: #fff;
+	color: var(--accent);
+	/* Accent text */
+	border-radius: 4px;
+	/* More squared off */
+	text-decoration: none;
 	margin: 0 .5em .5em 0;
+	transition: all 0.2s ease;
+	font-weight: bold;
 }
 
 a[rel="tag"]:hover {
-	border: 1px solid var(--primary);
-	background-color: var(--primary);
-	color: var(--secondary);
+	border-color: var(--accent);
+	background-color: var(--accent);
+	color: white;
 }
 
 a[rel="tag"]:last-child {
 	margin-right: 0;
 }
 
+/* Hero */
+.hero {
+	margin-bottom: 2em;
+}
+
+/* Homepage Split */
+.home-split {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2.5em;
+	margin-top: 2em;
+}
+
+.home-split h2 {
+	font-family: "Playfair Display", serif;
+	font-size: 1.75rem;
+	color: var(--primary);
+	border-bottom: 1px solid var(--border-color);
+	padding-bottom: 0.3em;
+	margin-bottom: 0.75em;
+}
+
+/* Work list reuses the existing `article` posts-list rule
+   (margin-bottom / padding-bottom / border-bottom) already defined
+   above under "Posts List" — no new selector needed for spacing. */
+
+/* Resume */
+.btn-download {
+	display: inline-block;
+	color: var(--accent);
+	border-bottom: 2px solid var(--accent);
+	padding-bottom: 0.1em;
+	text-decoration: none;
+	font-weight: bold;
+	transition: color 0.2s, border-color 0.2s;
+	margin-top: 1em;
+}
+
+.btn-download:hover {
+	color: var(--primary);
+	border-color: var(--primary);
+}
+
 /* Contact Form */
 form {
-  display: grid;
-	padding: 2em 0;
+	display: grid;
+	padding: 2em;
+	background: white;
+	border: 1px solid var(--border-color);
+	border-radius: 8px;
+	max-width: 600px;
+	margin: 0 auto;
 }
 
 form label {
-  display: none;
+	display: block;
+	/* changed from none so we can see labels if we had them or screen readers */
+	/* but existing html might rely on them being hidden if they are just for netlify bots? assuming standard visible form */
+	/* double check previous css: previous was display: none. keeping it hidden if that's the intention, but usually labels are good for UX */
+	/* Reviewing original css: form label { display: none; } */
+	/* I will keep it consistent but if I want to "customize styling" I should probably make it better. */
+	/* Let's stick to the visible inputs handling it for now, as I don't see the html structure. */
+	margin-bottom: 0.5em;
+	font-weight: bold;
 }
+
+/* Reverting label display to none based on original css, assuming structure doesn't use visible labels */
+form label {
+	display: none;
+}
+
 
 input,
 textarea,
 button {
-  width: 100%;
-  padding: 1em;
-  margin-bottom: 1em;
+	width: 100%;
+	padding: 1rem;
+	margin-bottom: 1.5em;
 	font-size: 1rem;
-	font-family: "Avenir", "Avenir Next", sans-serif;
+	font-family: inherit;
+	border-radius: 4px;
 }
 
 input,
 textarea {
-	border: 1px solid black;
+	border: 1px solid var(--border-color);
+	background-color: #f9f9f9;
+	transition: border-color 0.2s, background-color 0.2s;
+}
+
+input:focus,
+textarea:focus {
+	outline: none;
+	border-color: var(--primary);
+	background-color: white;
 }
 
 button {
-	border: 1px solid var(--primary);
+	border: none;
 	background-color: var(--primary);
-	color: var(--secondary);
+	color: white;
 	cursor: pointer;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: background-color 0.2s;
+}
+
+button:hover {
+	background-color: var(--accent);
+	/* Hover to orange */
+}
+
+footer {
+	text-align: center;
+	color: var(--text-light);
+	font-size: 0.9rem;
+	border-top: 1px solid var(--border-color);
+	margin-top: 2em;
+}
+
+/* Utility Bar */
+.utility-bar {
+	background-color: var(--primary);
+	padding: 0.5em 2em;
+}
+
+.utility-bar .social-links {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	justify-content: flex-end;
+	gap: 1.5em;
+}
+
+.utility-bar .social-links a,
+.utility-bar .social-links a:visited {
+	color: rgba(255, 255, 255, 0.8);
+	text-decoration: none;
+	font-size: 0.8rem;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	font-weight: bold;
+	transition: color 0.2s;
+}
+
+.utility-bar .social-links a:hover {
+	color: var(--accent);
 }
 
 @media screen and (min-width:768px) {
 	:root {
-		font-size: 1.1rem;
+		font-size: 18px;
+		/* Slightly larger base size */
+	}
+
+	main {
+		padding: 3em;
+	}
+
+	.home-split {
+		grid-template-columns: 1fr 1fr;
 	}
 }

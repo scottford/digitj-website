@@ -1,33 +1,23 @@
 ---
-title: About us
-metaDescription: This is a sample meta description. If one is not present in your page/post's front matter, the default metadata.description will be used instead.
-date: 2017-01-01T00:00:00.000Z
+title: About
+metaDescription: TJ Gunther is a content strategist with years of agency experience in content strategy, information architecture, and content operations.
 permalink: /about/index.html
 eleventyNavigation:
   key: About
-  order: 1
+  order: 2
 ---
-Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
+I've spent my career trying to answer one question over and over, in different rooms, for different clients: where does this actually belong, and why should anyone care to find it?
 
-Add a few line breaks in here to test:-
-Capitalize  
-on  
-low  
-hanging  
-fruit  
+That started at Ithaca College, where I studied Journalism and, almost by accident, ended up rebuilding the campus radio station's website. Nobody assigned me an information architecture course — I just kept running into the same problem: content that was fine on its own, sitting in a structure nobody had actually designed. Fixing that turned out to be more interesting to me than writing the stories themselves.
 
-## Our services
+## Years in an agency setting
 
-Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
+Since then I've worked agency-side, which means I've seen a lot of organizations up close, under deadline, mid-crisis, or mid-rebrand. Agency work teaches you things a single in-house job never quite does — how to walk into an unfamiliar org and figure out fast where the real structure lives versus where the official org chart says it lives. Those are almost never the same thing.
 
-### Blue-sky thinking
+I care about content strategy and information architecture specifically — not because taxonomies are glamorous, but because they're the part of a website nobody notices when it's working and everybody feels when it isn't. Good structure is invisible. That's the whole point, and it's also why it's so easy to under-invest in until something breaks.
 
-Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
+## Outside of the deck
 
-#### Management frameworks
+When I'm not auditing someone's content or arguing gently for a simpler navigation menu, I'm usually reading, or lately, poking at how AI tools change the way people build things — this site itself was put together with an AI coding assistant, partly because I wanted to actually understand the tools instead of just writing about them.
 
-Podcasting operational change management inside of workflows to establish a framework. Taking seamless key performance indicators offline to maximise the long tail. Keeping your eye on the ball while performing a deep dive on the start-up mentality to derive convergence on cross-platform integration. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
-
-##### Regulatory convergence
-
-Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
+If you want the resume-shaped version of all this, [it's over here](/resume/). If you want to see the work itself, [head to the portfolio](/work/).

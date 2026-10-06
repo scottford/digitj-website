@@ -1,0 +1,25 @@
+<section class="workslist">
+	{% for item in worklist | reverse %}
+		<article{% if item.url == url %} data-current="current item"{% endif %}>
+			<h3>
+				<a href="{{ item.url | url }}">
+					{% if item.data.title %}
+						{{ item.data.title }}
+					{% else %}
+						Untitled
+					{% endif %}
+				</a>
+			</h3>
+			{% if item.data.summary %}
+				<p>
+					{{ item.data.summary }}
+				</p>
+			{% endif %}
+			<p>
+				<small>
+					{% if item.data.client %}{{ item.data.client }}{% endif %}{% if item.data.year %} · {{ item.data.year }}{% endif %}
+				</small>
+			</p>
+		</article>
+	{% endfor %}
+</section>

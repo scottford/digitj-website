@@ -15,4 +15,34 @@ collections:
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Author", name: "author", widget: "string", required: false}
+      - {label: "Summary", name: "summary", widget: "text", required: false}
+      - {label: "Meta Description", name: "metaDescription", widget: "string", required: false}
+      - {label: "Tags", name: "tags", widget: "list", default: ["post"]}
       - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "work"
+    label: "Work"
+    folder: "work"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Client", name: "client", widget: "string", required: false}
+      - {label: "Role", name: "role", widget: "string", required: false}
+      - {label: "Year", name: "year", widget: "string", required: false}
+      - {label: "Summary", name: "summary", widget: "text", required: false}
+      - {label: "Meta Description", name: "metaDescription", widget: "string", required: false}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Tags", name: "tags", widget: "list", default: ["work"]}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "resume"
+        label: "Resume"
+        file: "pages/resume.md"
+        fields:
+          - {label: "Resume PDF", name: "resumePdf", widget: "file", media_folder: "static/files", public_folder: "/static/files", required: false}
+          - {label: "Body", name: "body", widget: "markdown"}

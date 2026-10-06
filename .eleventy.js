@@ -47,6 +47,22 @@ module.exports = function(eleventyConfig) {
     return DateTime.fromJSDate(dateObj).toFormat("yyyy-MM-dd");
   });
 
+  // Extract first 2 sentences from rendered HTML content
+  eleventyConfig.addFilter("excerpt", function(content) {
+    if (!content) return "";
+    const text = content.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    const sentences = text.match(/[^.!?]*[.!?]+/g);
+    if (sentences && sentences.length >= 2) {
+      return sentences[0].trim() + " " + sentences[1].trim();
+    }
+    return sentences ? sentences[0].trim() : text.substring(0, 200);
+  });
+
+  // Return first N items from an array
+  eleventyConfig.addFilter("limit", function(arr, n) {
+    return arr.slice(0, n);
+  });
+
   // Minify CSS
   eleventyConfig.addFilter("cssmin", function(code) {
     return new CleanCSS({}).minify(code).styles;
@@ -78,6 +94,7 @@ module.exports = function(eleventyConfig) {
   // Don't process folders with static assets e.g. images
   eleventyConfig.addPassthroughCopy("favicon.ico");
   eleventyConfig.addPassthroughCopy("static/img");
+  eleventyConfig.addPassthroughCopy("static/files");
   eleventyConfig.addPassthroughCopy("admin/");
   // We additionally output a copy of our CSS for use in Decap CMS previews
   eleventyConfig.addPassthroughCopy("_includes/assets/css/inline.css");

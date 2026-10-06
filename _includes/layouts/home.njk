@@ -3,4 +3,34 @@ layout: layouts/base.njk
 section: home
 ---
 
-{{ content | safe }}
+<section class="hero">
+  {{ content | safe }}
+</section>
+
+<div class="home-split">
+  <section class="home-work">
+    <h2>Featured Work</h2>
+    {% set featuredWork = collections.work | reverse | limit(2) %}
+    {% for item in featuredWork %}
+      <article>
+        <h3><a href="{{ item.url | url }}">{{ item.data.title or "Untitled" }}</a></h3>
+        {% if item.data.summary %}<p>{{ item.data.summary }}</p>{% endif %}
+        <p><a href="{{ item.url | url }}" class="read-more">View case study →</a></p>
+      </article>
+    {% endfor %}
+    <p><a href="{{ '/work/' | url }}">See all work →</a></p>
+  </section>
+
+  <section class="home-posts">
+    <h2>Recent Posts</h2>
+    {% set recentPosts = collections.post | reverse | limit(3) %}
+    {% for post in recentPosts %}
+      <article>
+        <h3><a href="{{ post.url | url }}">{{ post.data.title or "Untitled" }}</a></h3>
+        <p class="post-excerpt">{{ post.templateContent | excerpt }}</p>
+        <p><a href="{{ post.url | url }}" class="read-more">Read more →</a></p>
+      </article>
+    {% endfor %}
+    <p><a href="{{ '/blog/' | url }}">See all posts →</a></p>
+  </section>
+</div>

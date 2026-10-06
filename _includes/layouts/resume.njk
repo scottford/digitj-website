@@ -1,0 +1,11 @@
+---
+layout: layouts/base.njk
+section: resume
+---
+<h1>{{ title }}</h1>
+
+{{ content | safe }}
+
+{% if resumePdf %}
+  <p><a class="btn-download" href="{{ resumePdf | url }}" download>Download PDF</a></p>
+{% endif %}
