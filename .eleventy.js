@@ -9,6 +9,14 @@ module.exports = function(eleventyConfig) {
   // Eleventy Navigation https://www.11ty.dev/docs/plugins/navigation/
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
+  // Drafts: add `draft: true` to a page or post's front matter to unpublish it.
+  // It won't be built, listed, or shown in the navigation until you remove it.
+  eleventyConfig.addPreprocessor("drafts", "*", (data) => {
+    if (data.draft) {
+      return false;
+    }
+  });
+
   // Configuration API: use eleventyConfig.addLayoutAlias(from, to) to add
   // layout aliases! Say you have a bunch of existing content using
   // layout: post. If you don’t want to rewrite all of those values, just map
