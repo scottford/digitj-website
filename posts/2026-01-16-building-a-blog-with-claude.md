@@ -1,4 +1,5 @@
 ---
+draft: true
 title: Building a Blog with Claude
 metaDescription: When you want to host a website but don't want to deal with hosting, servers, and especially costs.
 author: TJ Gunther
